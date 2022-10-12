@@ -67,7 +67,17 @@ void dealloc(Node* head)
 //   function object struct declarations
 // -----------------------------------------------
 
+struct EqualsNum
+{
+    int num;
+    
+    EqualsNum(int num_) : num(num_) {}
+    bool operator()(int val) {
+        return val == num;
+    }
+};
 
+template Node* llfilter<EqualsNum>(Node* head, EqualsNum pred);
 
 
 
@@ -86,10 +96,20 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
-
-
-
+    Node* smaller;
+    Node* larger;
+    llpivot(head, smaller, larger, atoi(argv[2]));
+    print(smaller);
+    print(larger);
+    cout << head << endl;
     
+    cout << endl << "Filtered (larger): " << endl;
+    EqualsNum en(atoi(argv[3]));
+    larger = llfilter(larger, en);
+    print(larger);
+
+    dealloc(smaller);
+    dealloc(larger);
     return 0;
 
 }
