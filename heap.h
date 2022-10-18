@@ -61,8 +61,6 @@ public:
    */
   size_t size() const;
 
-  void printOut(std::ostream& o) const;
-
 private:
   /// Add whatever helper functions and data members you need below
   std::vector<T> underlying;
@@ -73,16 +71,6 @@ private:
   int bestchild(int p) const;
   void trickledown(int i);
 };
-
-template <typename T, typename PComparator>
-void Heap<T,PComparator>::printOut(std::ostream& o) const
-{
-  for (size_t i = 0; i < size(); ++i)
-  {
-    o << underlying[i] << " ";
-  }
-  o << std::endl;
-}
 
 // Add implementation of member functions here
 template <typename T, typename PComparator>
