@@ -1,0 +1,6 @@
+*.in
+*-test
+*.o
+heap_test
+test_*
+.vscode
